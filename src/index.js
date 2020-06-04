@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "./redux/rootReducer";
+import { loadState, saveState } from "./redux/localStorage";
 import App from "./App";
 import "./index.scss";
-import { loadState, saveState } from "./localStorage";
 
 const persistedState = loadState();
 const store = createStore(rootReducer, persistedState);
