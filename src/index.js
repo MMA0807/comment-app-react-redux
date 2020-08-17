@@ -1,18 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk"
 import { rootReducer } from "./redux/rootReducer";
 import { loadState, saveState } from "./redux/localStorage";
 import App from "./App";
 import "./index.scss";
 
 const persistedState = loadState();
-const store = createStore(rootReducer, persistedState);
+const store = createStore(rootReducer, persistedState, 
+  applyMiddleware(
+    thunk
+  )
+);
 
 store.subscribe(() => {
+  const state = store.getState()
+
   saveState({
-    comments: store.getState().comments,
+    comments: state.comments,
+    fetchComments: state.fetchComments
   });
 });
 
