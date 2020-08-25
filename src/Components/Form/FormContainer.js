@@ -1,42 +1,42 @@
-import React from "react";
-import {Form} from "./Form";
-import { connect } from "react-redux";
-import { addComment, showAlert } from "../../redux/actions";
-import { getAlert } from "../../redux/selectors";
+import React from 'react';
+import {Form} from './Form';
+import { connect } from 'react-redux';
+import { addComment, showAlert } from '../../redux/actions';
+import { getAlert } from '../../redux/selectors';
 
 class FormContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      author: "",
-      commentText: "",
+      name: '',
+      body: '',
     };
   }
 
   formSubmitHandler = (e) => {
     e.preventDefault();
 
-    const { author, commentText } = this.state;
+    const { name, body } = this.state;
     const { showAlert, addComment } = this.props;
     const date = Date.now();
 
-    if (!author.trim() || !commentText.trim()) {
+    if (!name.trim() || !body.trim()) {
       showAlert('Введите данные!');
       return;
     }
 
     const newComment = {
       id: date,
-      author,
-      commentText,
+      name,
+      body,
       date: new Date(date).toLocaleString(),
     };
 
     addComment(newComment);
 
     this.setState({
-      author: "",
-      commentText: "",
+      name: '',
+      body: '',
     });
   };
 
@@ -50,14 +50,14 @@ class FormContainer extends React.Component {
   };
 
   render() {
-    const { author, commentText } = this.state;
+    const { name, body } = this.state;
     const { alert } = this.props;
 
     return (
       <Form 
         alert = {alert}
-        author = {author}
-        commentText = {commentText}
+        name = {name}
+        body = {body}
         handleChange = {this.handleChange}
         formSubmitHandler = {this.formSubmitHandler}
       />

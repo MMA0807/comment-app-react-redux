@@ -1,13 +1,18 @@
-import { ADD_COMMENT, REMOVE_COMMENT } from "./types";
+import { ADD_COMMENT, REMOVE_COMMENT, FETCH_COMMENTS } from './actionTypes';
 
-const initialState = [];
+const initialState = {
+  comments: [],
+  fetchComments: [],
+};
 
 export const commentsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COMMENT:
-      return [...state, action.payload];
+      return {...state, comments: state.comments.concat([action.payload])};
     case REMOVE_COMMENT:
-      return state.filter((comment) => comment.id !== action.payload);
+      return state.comments.filter((comment) => comment.id !== action.payload);
+    case FETCH_COMMENTS:
+      return {...state, fetchComments: state.fetchComments.concat([action.payload])}
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { connect } from "react-redux"
-import Comments from "./Comments";
+import { connect } from 'react-redux'
+import { Comment } from '../Comment/Comment';
 import { fetchComments } from '../../redux/actions';
 import { Loader } from '../Loader/Loader'
 import { selectAllFetchComments, getLoading } from '../../redux/selectors';
@@ -19,7 +19,7 @@ const FetchComments = ({loading, comments, fetchComments}) => {
   }
   return (
       comments.map(comment => 
-      <Comments comment={comment} key={comment.id} />)
+      <Comment comment={comment} key={comment.id} />)
   )
 }
 

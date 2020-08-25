@@ -1,4 +1,4 @@
-import { SHOW_ALERT, SHOW_LOADER, HIDE_ALERT} from "./types";
+import { SHOW_ALERT, SHOW_LOADER, HIDE_ALERT} from './actionTypes';
 
 const initialState = {
   alert: null,

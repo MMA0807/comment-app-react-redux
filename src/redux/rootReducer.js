@@ -1,10 +1,8 @@
-import { combineReducers } from "redux";
-import { commentsReducer } from "./commentsReducer";
-import { appReducer } from "./appReducer";
-import { fetchCommentsReducer } from "./fetchCommentsReducer";
+import { combineReducers } from 'redux';
+import { commentsReducer } from './commentsReducer';
+import { appReducer } from './appReducer';
 
 export const rootReducer = combineReducers({
   comments: commentsReducer,
-  fetchComments: fetchCommentsReducer,
   app: appReducer,
 });
