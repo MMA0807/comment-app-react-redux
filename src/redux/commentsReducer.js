@@ -8,11 +8,11 @@ const initialState = {
 export const commentsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COMMENT:
-      return {...state, comments: state.comments.concat([action.payload])};
+      return {...state, comments: state.comments.concat([action.payload])}; //[...state,]
     case REMOVE_COMMENT:
-      return state.comments.filter((comment) => comment.id !== action.payload);
+      return {...state, comments: state.comments.filter((comment) => comment.id !== action.payload)};
     case FETCH_COMMENTS:
-      return {...state, fetchComments: state.fetchComments.concat([action.payload])}
+      return {...state, fetchComments: state.fetchComments.concat(action.payload)}
     default:
       return state;
   }

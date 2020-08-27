@@ -21,7 +21,7 @@ store.subscribe(() => {
   const state = store.getState()
 
   saveState({
-    comments: state.comments.comments,
+    comments: state.comments,
   });
 });
 

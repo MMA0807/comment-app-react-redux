@@ -10,13 +10,15 @@ export const Comment = ({ comment, removeComment }) => {
         <div className='text-muted text-wrap text-break'>{body}</div>
         <small className='text-muted'>{date}</small>
       </div>
-      <button
-        type='button'
-        className='btn btn-outline-dark btn-sm'
-        onClick={() => removeComment(id)}
-      >
-        &times;
-      </button>
+      {removeComment && 
+        <button
+          type='button'
+          className='btn btn-outline-dark btn-sm'
+          onClick={() => removeComment(id)}
+        >
+          &times;
+        </button>
+      }
     </div>
   );
 };
