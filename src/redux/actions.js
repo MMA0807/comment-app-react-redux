@@ -1,5 +1,5 @@
 import { ADD_COMMENT, SHOW_ALERT, REMOVE_COMMENT, FETCH_COMMENTS, SHOW_LOADER, HIDE_ALERT } from './actionTypes';
-import { asyncLocalStorage, loadState, saveState } from './localStorage';
+import { asyncLocalStorage } from './utils';
 
 export function addComment(comment) {
   return {
@@ -45,15 +45,16 @@ export function fetchComments() {
 
   return async dispatch => {
     try {
-      const response = await fetch(URL)
       dispatch(showLoader())
-
+      const response = await fetch(URL);
+      
       if (response.ok) {
         const json = await response.json()
         dispatch(showLoader()) 
-        saveState(json)
-        let state = loadState()
-        dispatch({ type: FETCH_COMMENTS, payload: state })
+        asyncLocalStorage.setItem(json)
+        asyncLocalStorage.getItem().then(pesistedState => {
+          dispatch({ type: FETCH_COMMENTS, payload: pesistedState })
+        })
       } else {
         dispatch(showAlert('Ошибка HTTP: ' + response.status))
       }

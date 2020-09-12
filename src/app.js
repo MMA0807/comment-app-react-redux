@@ -1,8 +1,8 @@
 import React from 'react';
-import FormContainer from './Components/Form/FormContainer';
-import CommentList from './Components/Comment/CommentList';
-import { Header } from './Components/Header';
-import FetchComments from './Components/FetchComments/FetchComments';
+import FormContainer from './components/form/formContainer';
+import CommentList from './components/comment/commentList';
+import { Header } from './components/header';
+import FetchComments from './components/fetchComments/fetchComments';
 
 function App() {
   return (

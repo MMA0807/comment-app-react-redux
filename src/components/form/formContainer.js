@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form} from './Form';
+import {Form} from './form';
 import { connect } from 'react-redux';
 import { addComment, showAlert } from '../../redux/actions';
 import { getAlert } from '../../redux/selectors';

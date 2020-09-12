@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Comment } from './Comment';
+import { Comment } from './comment';
 import { removeComment } from '../../redux/actions';
 import './comment.scss';
 import { getAllComments } from '../../redux/selectors';

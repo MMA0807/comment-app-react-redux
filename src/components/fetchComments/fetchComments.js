@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Comment } from '../Comment/Comment';
-import { fetchComments, removeComment } from '../../redux/actions';
+import { Comment } from '../comment/comment';
+import { fetchComments } from '../../redux/actions';
 import { Loader } from '../Loader/Loader'
 import { selectAllFetchComments, getLoading } from '../../redux/selectors';
 
-const FetchComments = ({loading, comments, fetchComments, removeComment}) => {
-
+const FetchComments = ({loading, comments, fetchComments}) => {
   if ( loading ) {
     return <Loader />
   }
@@ -19,17 +18,18 @@ const FetchComments = ({loading, comments, fetchComments, removeComment}) => {
   }
   return (
     <ul className='list-group mt-5'>
-      {comments.map(comment => (
-        <li className='media list-group-item mb-4' key={comment.id}>
-          <Comment comment={comment} />
-        </li>))
-    }</ul>
+      {
+        comments.map(comment => (
+          <li className='media list-group-item mb-4' key={comment.id}>
+            <Comment comment={comment} />
+          </li>))
+      }
+    </ul>
   )
 }
 
 const mapDispatchToProps = {
   fetchComments,
-  removeComment
 }
 
 const mapStateToProps = (state) => ({

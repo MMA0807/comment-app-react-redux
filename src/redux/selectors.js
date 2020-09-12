@@ -11,3 +11,5 @@ export const selectAllFetchComments = state => state.comments.fetchComments
 export const getAllComments = createSelector(selectAllComments, (comments) => {
   return comments.filter(comment => true)
 })
+
+export const selectComments = state => state.comments

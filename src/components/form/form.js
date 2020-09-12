@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert} from '../Alert/Alert'
+import {Alert} from '../alert/alert'
 
 export const Form = ({alert, name, body, handleChange, formSubmitHandler}) => {
    
